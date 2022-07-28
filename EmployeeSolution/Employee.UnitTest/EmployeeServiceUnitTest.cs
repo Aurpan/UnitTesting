@@ -63,5 +63,14 @@ namespace Employee.UnitTest
             mocksFactory.VerifyAllExpectationsHaveBeenMet();
 
         }
+
+        [Test]
+        public void TestMethod_ShouldThrowException()
+        {
+            mockEmployeeRepository.Expects.One.Method(x => x.EmployeeSalaryPerHour(1))
+                .Will(Throw.Exception(new Exception("Invalid Employee")));
+
+            //mockEmployeeRepository.Expects.One.SetProperty(x => ).To(true);
+        }
     }
 }
